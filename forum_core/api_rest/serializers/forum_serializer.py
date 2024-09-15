@@ -1,4 +1,7 @@
 from rest_framework import serializers
+from ..models.forum_model import ForumModel
 
 class ForumSerialiizer(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = ForumModel
+        fields = "__all__"

@@ -1,5 +1,9 @@
 from django.db import models
-from base.models.helpers.name_datetime_model import NameDateTimeModel
+from base.models.helpers.datetime_model import DatetimeModel
+from .forum_model import ForumModel
 
-class SubjectModel(NameDateTimeModel):
-    pass
+class SubjectModel(DatetimeModel):
+    # Relation between forum and subject
+    forum = models.ForeignKey(ForumModel, on_delete=models.CASCADE, null=True)
+    content = models.CharField(max_length=255)
+
