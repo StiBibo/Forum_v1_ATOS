@@ -3,4 +3,7 @@ from base.models.helpers.name_datetime_model import NameDateTimeModel
 
 
 class ForumModel(NameDateTimeModel):
-    pass
+
+    def __str__(self):
+        return f"{self.name}"
+    
