@@ -3,4 +3,5 @@ from base.models.helpers.name_datetime_model import NameDateTimeModel
 
 
 class ForumModel(NameDateTimeModel):
-    pass
+    description = models.CharField(max_length=255, null=True)
+    
