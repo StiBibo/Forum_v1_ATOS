@@ -43,8 +43,7 @@ def subject_detail_by_forum(request, id):
         print(f"subject : {subject}")
         return HttpResponse(status=404)
     
-    if not subject:
-        return  HttpResponse(status=404)
+
     
     if request.method == 'GET':
         serializer =  SubjectSerializer(subject, many=True)

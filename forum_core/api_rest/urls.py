@@ -27,12 +27,8 @@ urlpatterns = [
     path('detail_forum/<int:id>/', forum_detail, name='detail_forum'),
     path('list_message/', list_message, name='list_message'),
     path('list_subject/', list_subject, name='list_subject'),
-    
-    
-    path('message_detail_by_subject/<int:id>/', message_detail_by_subject, name='message_detail_by_subject'),
-    
-    
     path('subject_detail/<int:id>/', subject_detail, name='subject_detail'),
+    path('message_detail_by_subject/<int:id>/', message_detail_by_subject, name='message_detail_by_subject'),
     path('subject_detail_by_forum/<int:id>/', subject_detail_by_forum, name='subject_detail_by_forum'),
     
     

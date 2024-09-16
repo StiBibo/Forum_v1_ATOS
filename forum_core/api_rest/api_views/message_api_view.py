@@ -30,8 +30,6 @@ def message_detail_by_subject(request, id):
     except MessageModel.DoesNotExist : 
         return HttpResponse(status=404)
     
-    if not message:
-        return  HttpResponse(status=404)
     
     if request.method == 'GET':
         serializer =  MessageSerializer(message,many=True)
