@@ -33,3 +33,19 @@ def subject_detail(request, id):
     if request.method == 'GET':
         serializer =  SubjectSerializer(subject)
         return JsonResponse(serializer.data)
+    
+    
+@csrf_exempt
+def subject_detail_by_forum(request, id):    
+    try :
+        subject = SubjectModel.objects.filter(forum=id)
+    except SubjectModel.DoesNotExist : 
+        print(f"subject : {subject}")
+        return HttpResponse(status=404)
+    
+    if not subject:
+        return  HttpResponse(status=404)
+    
+    if request.method == 'GET':
+        serializer =  SubjectSerializer(subject, many=True)
+        return JsonResponse(serializer.data, safe=False)

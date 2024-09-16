@@ -22,3 +22,17 @@ def list_message(request):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
     
+
+@csrf_exempt
+def message_detail_by_subject(request, id):
+    try :
+        message = MessageModel.objects.filter(sujet = id)
+    except MessageModel.DoesNotExist : 
+        return HttpResponse(status=404)
+    
+    if not message:
+        return  HttpResponse(status=404)
+    
+    if request.method == 'GET':
+        serializer =  MessageSerializer(message,many=True)
+        return JsonResponse(serializer.data, safe=False)

@@ -14,6 +14,8 @@ Ce projet consiste à développer une API REST pour la gestion d'un forum en uti
 - Ajout de messages à un sujet
 - Création de message
 - Liste des messages d'un sujet
+- Liste de sujet par forum 
+- Liste de message par sujet 
 
 ## Technologies utilisées
 
@@ -47,8 +49,38 @@ Appliquez les migrations pour initialiser la base de données :
 - python manage.py makemigrations
 - python manage.py migrate
 
+# Creation de nos API
+Pour la création de nos fonctionnalites, nous allons utilise les fonctions pour la création de nos API.
+
+Creation de nos modeles Nous avons creer trois fichier(forum_model,subject_model,message_model) qui vont hériter des classes abstract(DateTimeModel, NameDateTimeModel). Nous allons faire 'python manage.py makemigrations'et 'python manage.py migrate' pour la créationde nos differents tables
+Nous avons creer un dossier serializer qui contient trois fichiers(forum_serializer,subject_serializer,message_serializer). Chacun de ces fichiers va importer son modele; ces fihier ce comporte comme des formulaire liée.
+Nous allons creer un dossier api_view pour la creation de nos differentes views
+'from django.http import HttpResponse, JsonResponse from django.views.decorators.csrf import csrf_exempt from rest_framework.parsers import JSONParser
+
+from api.models.forum_model import ForumModel 
+from api.serializers.forum_serializer import ForumSerializer
+
+@csrf_exempt
+def forum_list(request): 
+    if request.method == 'GET': 
+    forums = ForumModel.objects.all() 
+    serializer = ForumSerializer(forums, many=True) 
+    return JsonResponse(serializer.data, safe=False)
+
+ elif request.method == 'POST':
+     data = JSONParser().parse(request)
+     serializer = ForumSerializer(data=data)
+     if serializer.is_valid():
+         serializer.save()
+         return JsonResponse(serializer.data, status=201)
+     return JsonResponse(serializer.errors, status=400) '
+Dans notre exemple ci dessus, nous avons creer deux requete ('POST' pour la creation et une 'GET' pour lister)
+
+Dans le fichier urls que nous avons appeler nos differents views
+
 Lancez le serveur local avec la commande suivante :
 python manage.py runserver
+
 
 ## Documentation de l'API
 Utilisez Postman. Importez les endpoints et leurs descriptions pour permettre une visualisation et un test rapide des fonctionnalités.
