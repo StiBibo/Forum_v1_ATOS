@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "be5b59ea-6cc0-489d-83fe-c46399f4cc9f",
+		"name": "Forum V1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38169472"
+	},
+	"item": [
+		{
+			"name": "Forum",
+			"item": [
+				{
+					"name": "Get Forum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}list_forum/"
+					},
+					"response": []
+				},
+				{
+					"name": "Post Forum",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Forum4 Atos444\",\n    \"description\": \"description du forum4 Atos4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}list_forum/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Forum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}detail_forum/5/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subject",
+			"item": [
+				{
+					"name": "Get Subject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}list_subject/"
+					},
+					"response": []
+				},
+				{
+					"name": "Post Subject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"forum\": 4,\n    \"content\": \"Dagnogo Ella Ahouutest\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}list_subject/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail Subject by Forum",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}subject_detail_by_forum/3/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Subject by ID",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "Get a Message by subject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}message_detail_by_subject/1/"
+					},
+					"response": []
+				},
+				{
+					"name": "Post Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sujet\":1,\r\n    \"content\": \"Test 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}list_message/"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
